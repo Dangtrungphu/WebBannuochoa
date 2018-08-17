@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Dangky";
+    Layout = "~/Views/Layout/Layout_Allpage.cshtml";
+}
+
+
+<div class="text-center" style="padding-right: 20%;padding-left: 20%;margin-right: auto;margin-left: auto;">
+    @using (Html.BeginForm())
+    {
+        <div class="billing-details ">
+            <div>
+                <div class="section-title">
+                    <h3 class="title" style="text-align:center">Thông tin Khách Hàng</h3>
+                </div>
+
+                <div class="form-group">
+                    <input class="input" type="text" name="HoTen" placeholder="Họ Tên">
+                </div>
+                <div class="form-group">
+                    <input class="input" type="text" name="Taikhoan" placeholder="Tài khoản">
+                </div>
+                <div class="form-group">
+                    <input class="input" type="password" name="Matkhau" placeholder="Mật khẩu">
+                </div>
+                <div class="form-group">
+                    <input class="input" type="password" name="Matkhaunhaplai" placeholder="Nhập lại mật khẩu">
+                </div>
+                <div class="form-group">
+                    <input class="input" type="email" name="Email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <input class="input" type="text" name="DiachiKH" placeholder="Địa chỉ">
+                </div>
+                <div class="form-group">
+                    <input class="input" type="number" name="DienthoaiKH" placeholder="Điện thoại">
+                </div>
+                <div class="form-group">
+                    <input class="input" type="date" name="Ngaysinh" placeholder="Ngày sinh">
+                </div>
+                <button type="submit" class="btn btn-success">Đăng Ký</button>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+

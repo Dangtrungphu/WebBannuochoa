@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Layout/Layout_Allpage.cshtml";
+}
+
+
+@ViewBag.ThongBao
+<h4 style="color:red; text-align:center"> @ViewBag.Thongbao</h4>
+<section id="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" style="left:400px">
+                <div class="signup-form">
+                    <!--sign up form-->
+                    <h2 style="color:#0094ff">New User Signup!</h2>
+                    @using (Html.BeginForm())
+                    {
+                        <input type="text" name="Taikhoan" placeholder="Tên tài khoản">
+                        <input type="password" name="Matkhau" placeholder="Mật khẩu">
+
+                        <button type="submit" class="btn btn-default">Signup</button>
+                    }
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

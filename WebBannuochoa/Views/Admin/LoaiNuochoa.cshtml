@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebBannuochoa.Models.Loai>
+
+@{
+    ViewBag.Title = "LoaiNuochoa";
+    Layout = "~/Views/Admin/LayoutAdmin.cshtml";
+}
+
+<div class="content-box-header">
+    <div class="panel-title">QUẢN LÝ THÔNG TIN LOẠI NƯỚC HOA</div>
+</div>
+<p>
+    @Html.ActionLink("Thêm loại mới", "themloai")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Loại:
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLoai)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "sualoai", new { id=item.MaLoai }) |
+           
+            @Html.ActionLink("Xóa", "xoaloai", new { id=item.MaLoai })
+        </td>
+    </tr>
+}
+
+</table>

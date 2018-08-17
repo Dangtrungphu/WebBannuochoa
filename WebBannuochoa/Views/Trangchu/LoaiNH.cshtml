@@ -1,0 +1,9 @@
+﻿@model IEnumerable<WebBannuochoa.Models.Loai>
+
+@foreach (var item in Model)
+{
+    <ul class="list-links">
+        <li><a href="@Url.Action("SPTheoLoai","Trangchu",new { id = item.MaLoai })">@item.TenLoai</a></li>
+    </ul>
+
+}

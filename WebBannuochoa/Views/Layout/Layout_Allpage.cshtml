@@ -1,0 +1,297 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>M Ù I Perfume-SHOP</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Slick -->
+    <link href="~/Content/css/slick.css" rel="stylesheet" />
+    <link href="~/Content/css/slick-theme.css" rel="stylesheet" />
+
+    <!-- nouislider -->
+    <link href="~/Content/css/nouislider.min.css" rel="stylesheet" />
+    <!-- Font Awesome Icon -->
+    <link href="~/Content/Font-Awesome/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- Custom stlylesheet -->
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link href="~/Content/css/login.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    @*Model Đăng nhập*@
+    <div id="id02" class="modal">
+        @using (Html.BeginForm("DangNhap", "Trangchu"))
+        {
+            <div class="modal-content animate">
+                <div class=""></div>
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <span style="font-size:30px">Đăng Nhập</span>
+                </div>
+
+                <div class="container" style="padding: 0;width: 90%;margin-bottom:30px">
+
+                    @using (Html.BeginForm())
+                    {
+                        <label for="uname"><b>Tài Khoản</b></label>
+                        <input type="text" placeholder="Tài Khoản" name="Taikhoan" required>
+
+                        <label for="psw"><b>Mật Khẩu</b></label>
+                        <input type="password" placeholder="Mật Khẩu" name="Matkhau" required>
+
+                        <button type="submit" class="btn btn-success btn-block">Đăng Nhập</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <!-- HEADER -->
+    <header>
+        <!-- header -->
+        <div id="header">
+            <div class="container">
+                <div class="pull-left">
+                    <!-- Logo -->
+                    <div class="header-logo">
+                        <a class="logo" href="@Url.Action("Trangchu","Trangchu")">
+                            <img src="~/Hinh/29595192_374962909652737_1266967389891619484_n.jpg" style="width:200px" alt="" />
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <!-- Search -->
+                    <div class="header-search">
+                        @Html.Action("Search", "Trangchu")
+                    </div>
+                    <!-- /Search -->
+                </div>
+                <div class="pull-right">
+                    <ul class="header-btns">
+                        <!-- Account -->
+                        <li class="header-account dropdown default-dropdown">
+                            <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                                <div class="header-btns-icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <strong class="text-uppercase">Tài Khoản <i class="fa fa-caret-down"></i></strong>
+                                <br />
+                                @if (ViewBag.TenKH != null)
+                                {
+                                    <a href="#" class="text-uppercase">@ViewBag.TenKH</a>
+                                    <p class="hidden" name="thongitnKH">@ViewBag.MaKH</p>
+
+                                }
+                            </div>
+                            <ul class="custom-menu">
+                                <li><a href="@Url.Action("ThongtinKH","Trangchu")"><i class="fa fa-user"></i> Thông tin tài khoản</a></li>
+                                <li onclick="document.getElementById('id02').style.display='block'" style="width:auto;"><a href="#"><i class="fa fa-unlock-alt"></i> Đăng Nhập</a></li>
+                                <li><a href="@Url.Action("Dangky","User")"><i class="fa fa-user-plus"></i>Đăng Ký</a></li>
+                                @*Kiểm tra đăng nhập của người dùng*@
+                                @if (ViewBag.TenKH != null)
+                                {
+                                    <li><a href="@Url.Action("Dangxuat","Trangchu")"><i class="fa fa-close fa-2x"></i>Đăng Xuất</a></li>
+                                }
+                                @if (ViewBag.CV == "ADMIN")
+                                {
+                                    <li><a href="@Url.Action("Nuochoa","Admin")"><i class="fas fa-user-secret fa-2x"></i>Admin</a></li>
+                                }
+                            </ul>
+                        </li>
+                        <!-- /Account -->
+                        <!-- Cart -->
+                        <li class="header-cart dropdown default-dropdown">
+                            @Html.Action("GiohangPartial", "Giohang")
+                        </li>
+                        <!-- /Cart -->
+                        <!-- Mobile nav toggle-->
+                        <li class="nav-toggle">
+                            <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                        </li>
+                        <!-- / Mobile nav toggle -->
+                    </ul>
+                </div>
+            </div>
+            <!-- header -->
+        </div>
+        <!-- container -->
+    </header>
+    <!-- /HEADER -->
+    <!-- NAVIGATION -->
+    <div id="navigation">
+        <!-- container -->
+        <div class="container">
+            <div id="responsive-nav">
+                <!-- menu nav -->
+                <div class="menu-nav">
+                    <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+                    <ul class="menu-list" style="margin-left: 30%;width: 700px;">
+                        <li><a href="@Url.Action("Trangchu","Trangchu")">Home</a></li>
+                        <li class="dropdown mega-dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Hãng Sản Xuất <i class="fa fa-caret-down"></i></a>
+                            <div class="custom-menu">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        @Html.Action("HangSX", "Trangchu")
+                                        <hr class="hidden-md hidden-lg">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown mega-dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Loại Nước Hoa <i class="fa fa-caret-down"></i></a>
+                            <div class="custom-menu">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        @Html.Action("LoaiNH", "Trangchu")
+                                        <hr class="hidden-md hidden-lg">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="@Url.Action("Lienhe","Trangchu")">Liên Hệ</a></li>
+                        <li><a href="@Url.Action("About","Trangchu")">Cửa Hàng</a></li>
+                    </ul>
+                </div>
+                <!-- menu nav -->
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /NAVIGATION -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                @RenderBody()
+            </div>
+            <div class="fb-like" data-href="https://www.facebook.com/Tu%C3%A2n-H%C3%B9ng-Ph%C3%BAc-Shop-502059740216587/?modal=admin_todo_tour" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            <!-- /row --><br />
+            <div class="fb-comments" data-href="https://www.facebook.com/Tu%C3%A2n-H%C3%B9ng-Ph%C3%BAc-Shop-502059740216587/?modal=admin_todo_tour" data-numposts="5"></div>
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+    <!-- FOOTER -->
+    <footer id="footer" class="section section-grey">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- footer widget -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <!-- footer logo -->
+                        <div class="footer-logo">
+                            <a class="logo" href="@Url.Action("Trangchu","Trangchu")">
+                                <img src="~/Hinh/29595192_374962909652737_1266967389891619484_n.jpg" style="width:200px" alt="" />
+                            </a>
+                        </div>
+                        <!-- /footer logo -->
+
+                        <p>475A Điện Biên Phủ, phường 25, quận Bình Thạnh, TP Hồ Chí Minh.</p>
+
+                        <!-- footer social -->
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                        <!-- /footer social -->
+                    </div>
+                </div>
+                <!-- /footer widget -->
+                <!-- footer widget -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-header">Tài khoản của bạn</h3>
+                        <ul class="list-links">
+                            <li><a href="@Url.Action("ThongtinKH","Trangchu")">My Account</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /footer widget -->
+
+                <div class="clearfix visible-sm visible-xs"></div>
+
+                <!-- footer widget -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-header">Dịch vụ khách hàng</h3>
+                        <ul class="list-links">
+                            <li><a href="@Url.Action("Lienhe","Trangchu")">Liên Hệ</a></li>
+                            @*<li><a href="#">About Us</a></li>
+                            <li><a href="#">Shiping & Return</a></li>
+                            <li><a href="#">Shiping Guide</a></li>
+                            <li><a href="#">FAQ</a></li>*@
+                        </ul>
+                    </div>
+                </div>
+                <!-- /footer widget -->
+                <!-- footer subscribe -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-header">Cửa hàng</h3>
+                        <li><a href="@Url.Action("About","Trangchu")">Thông tin.</a></li>
+                        @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                        <form>
+                            <div class="form-group">
+                                <input class="input" placeholder="Enter Email Address">
+                            </div>
+                            <button class="primary-btn">Join Newslatter</button>
+                        </form>*@
+                    </div>
+                </div>
+                <!-- /footer subscribe -->
+            </div>
+            <!-- /row -->
+            <hr>
+        </div>
+        <!-- /container -->
+    </footer>
+    <!-- /FOOTER -->
+    <!-- jQuery Plugins -->
+    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/slick.min.js"></script>
+    <script src="~/Scripts/js/nouislider.min.js"></script>
+    <script src="~/Scripts/js/main.js"></script>
+    <script src="~/Scripts/js/jquery.zoom.min.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id02');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,87 @@
+﻿
+
+
+@using WebBannuochoa.Models
+@model List<Giohang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Layout/Layout_Allpage.cshtml";
+}
+
+<style>
+    #btnGH {
+        margin-left: 5px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+</style>
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+
+
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight:bold">
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+            Tên Nước Hoa
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+            Ảnh Nước Hoa
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+            Số Lượng
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+            Đơn giá
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+            Thành Tiền
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+        </th>
+        <th style="font-weight:bold;background-color:#dad4d4;font-size:14px;text-align:center;">
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td> @item.iMaNH </td>
+            <td> @item.sTenNH</td>
+            <td><img src="@Url.Content("~/Hinhsanpham/"+ @item.sAnhbia)" style="width:100px;height:120px"></td>
+            @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMaSp = item.iMaNH }))
+            {
+                <td>
+                    <input type="number" min="1" name="txtSoluong" value="@item.iSoluong" style="background-color:#39b0ed;width:50px" />
+                </td>
+                <td>@String.Format("{0:0,0}", item.dGiaBan) </td>
+                <td>@String.Format("{0:0,0}", item.dThanhtien) </td>
+                <td class="col-sm-1"> <a href="@Url.Action("Details", "Trangchu", new { id = item.iMaNH })"> Chi tiết </a></td>
+                <td> @Html.ActionLink("Xóa", "XoaGiohang", new { @iMaSp = item.iMaNH })</td>
+                <td><button id="btnGH" style="background-color:#428BCA;font-size:12px;width:90%" type="submit" value="Cập Nhật" class="btn btn-primary btn-lg round">Cập Nhật</button></td>
+
+            }
+        </tr>
+    }
+    <tr style="font-weight: bold; text-align:right; color:red">
+        <td colspan="4"> Số lượng: @ViewBag.Tongsoluong </td>
+        <td colspan="5"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ </td>
+    </tr>
+    <tr>
+        <td colspan="9" align="center">
+            <a href="@Url.Action("Trangchu","Trangchu")"> <button id="btnGH" style="background-color:#428BCA;width:50%" type="submit" class="btn btn-primary btn-lg round">Tiếp Tục Mua Hàng</button></a>
+            <a href="@Url.Action("XoaTatcaGiohang","GioHang")"> <button id="btnGH" style="background-color:#428BCA;width:50%" type="submit" class="btn btn-primary btn-lg round">Xóa Giỏ Hàng</button></a>
+            <a href="@Url.Action("Dathang","GioHang")"> <button id="btnGH" style="background-color:#428BCA;width:50%" type="submit" class="btn btn-primary btn-lg round">Đặt Hàng</button></a>
+        </td>
+    </tr>
+
+</table>
+
+
+
+
+

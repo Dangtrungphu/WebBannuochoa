@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebBannuochoa.Models.HANG>
+
+@{
+    ViewBag.Title = "Hangsx";
+    Layout = "~/Views/Admin/LayoutAdmin.cshtml";
+}
+
+<div class="content-box-header">
+    <div class="panel-title">THÔNG TIN HÃNG NƯỚC HOA:</div>
+</div>
+
+<p>
+    @Html.ActionLink("Thêm hãng mới", "themhang")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Hãng:
+        </th>
+        <th>
+            Nhập khẩu:
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhapKhau)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "suahang", new { id=item.MaH }) |
+            @Html.ActionLink("Chi tiết", "chitiethang", new { id=item.MaH }) |
+            @Html.ActionLink("Xóa", "xoahang", new { id=item.MaH })
+        </td>
+    </tr>
+}
+
+</table>

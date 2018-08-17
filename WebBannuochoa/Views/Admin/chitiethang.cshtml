@@ -1,0 +1,35 @@
+﻿@model WebBannuochoa.Models.HANG
+
+@{
+    ViewBag.Title = "chitiethang";
+    Layout = "~/Views/Admin/LayoutAdmin.cshtml";
+}
+
+<h2>chitiethang</h2>
+
+<div>
+    <h4>HANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Hãng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenH)
+        </dd>
+
+        <dt>
+           Nhập Khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhapKhau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "suahang", new { id = Model.MaH }) |
+    @Html.ActionLink("Trở về", "HangSX")
+</p>

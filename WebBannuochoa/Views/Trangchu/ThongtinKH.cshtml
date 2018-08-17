@@ -1,0 +1,56 @@
+﻿
+
+
+@model IEnumerable<WebBannuochoa.Models.thongtinKH>
+@{
+    ViewBag.Title = "ThongtinKH";
+    Layout = "~/Views/Layout/Layout_Allpage.cshtml";
+}
+
+@if (ViewBag.TenKH != null)
+{
+    <div class="modal-content animate">
+        <h2 class="tieude" style="text-align:center">Thông tin người dùng</h2>
+        <ul>
+            <li><span>Họ tên: @ViewBag.ht </span></li>
+            <li> <span>Điện thoại : @ViewBag.dt </span></li>
+            <li> <span>Địa chỉ: @ViewBag.dc </span></li>
+            <li><span>Ngày sinh: @ViewBag.ns </span></li>
+            <li><span>Email: @ViewBag.email </span></li>
+        </ul>
+    </div>
+    <div class="modal-content animate">
+        <div class="container" style="padding: 0;width: 90%;margin-bottom:30px">
+            <table class="table">
+                <h2 class="tieude" style="text-align:center">Lịch sử mua hàng</h2>
+
+                <thead>
+                    <tr>
+                        <th>Tên nước hoa</th>
+                        <th>Giá </th>
+                        <th>Số lượng</th>
+                        <th>Ngày giao</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@item.TenNH</td>
+                            <td>@item.Giaban</td>
+                            <td>@item.Soluong</td>
+                            <td>@item.Ngaygiao</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    </div>
+}
+@if (ViewBag.TenKH == null)
+{
+    <h1>Chưa đăng nhập</h1>
+}
+
+
+

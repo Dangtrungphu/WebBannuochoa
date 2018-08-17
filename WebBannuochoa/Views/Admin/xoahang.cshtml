@@ -1,0 +1,43 @@
+﻿@model WebBannuochoa.Models.HANG
+
+@{
+    ViewBag.Title = "xoahang";
+    Layout = "~/Views/Admin/LayoutAdmin.cshtml";
+}
+
+<div class="content-box-header">
+    <div class="panel-title">XÁC NHẬN THÔNG TIN HÃNG NƯỚC HOA CẦN XÓA</div>
+</div>
+
+<h3>BẠN CÓ ĐỒNG Ý XÓA HÃNG NÀY?</h3>
+<div>
+    <h4>HANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên hãng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenH)
+        </dd>
+
+        <dt>
+            Nhập khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhapKhau)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "HangSX")
+        </div>
+    }
+</div>

@@ -1,0 +1,53 @@
+﻿
+@using WebBannuochoa.Models
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Layout/Layout_Allpage.cshtml";
+}
+
+
+<div class="product product-details clearfix">
+    <div class="col-md-6">
+        <div id="product-main-view">
+            <div class="product-view">
+                @*<img src="~/Hinh/main-product01.jpg" alt="">*@
+                <img src="@Url.Content("~/Hinhsanpham/"+ Model.Anhbia)" style="width:300px;height:300px" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="product-body">
+            <h2 class="product-name">@Model.TenNH</h2>
+            <h3 class="product-price">@String.Format("{0:0,0}", Model.Giaban) VNĐ</h3>
+            <div>
+                <div class="product-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o empty"></i>
+                </div>
+                @*<a href="#">3 Review(s) / Add Review</a>*@
+            </div>
+            <p><strong>Số Lượng:</strong> @Model.Soluongton</p>
+            <p><strong>Cửa Hàng:</strong> M Ù I Perfune Shop</p>
+            <p>
+                @Model.Mota
+            </p>
+            <div class="product-btns">
+                <a href="@Url.Action("ThemGiohang", "GioHang", new { @iMaNH= Model.MaNH, @strURL=Request.Url.ToString() })" class="btn btn-default add-to-cart">
+                    <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ</button>
+                </a>
+                <div class="pull-right">
+                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                    <button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

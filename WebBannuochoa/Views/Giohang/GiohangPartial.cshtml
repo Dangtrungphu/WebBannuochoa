@@ -1,0 +1,46 @@
+﻿@using WebBannuochoa.Models
+<style>
+    .nutxoa a{
+        margin-left:80%;
+    }
+</style>
+<a href="@Url.Action("Giohang","GioHang")" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+    <div class="header-btns-icon">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="qty">@ViewBag.Tongsoluong</span>
+    </div>
+    <strong class="text-uppercase">
+        Giỏ Hàng:
+        <br />
+        @ViewBag.TongTien VNĐ
+    </strong>
+    <br>
+</a>
+
+<div class="custom-menu">
+    <div id="shopping-cart">
+        <div class="shopping-cart-list">
+            @foreach (var item in Model)
+            {
+                <div class="product product-widget">
+                    <div class="product-thumb">
+
+                        @*<img src="~/Hinh/thumb-product01.jpg" alt=""/>*@
+                        <img src="@Url.Content("~/Hinhsanpham/"+ @item.sAnhbia)" style="width:50px;height:50px" alt="" />
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-price">@String.Format("{0:0,0}", item.dGiaBan)</h3>
+                        <h2 class="product-name" ><a href="#" >@item.sTenNH</a></h2>
+                    </div>
+                    <button class="cancel-btn nutxoa" style="margin-top:20px">@Html.ActionLink("Xóa", "XoaGiohang", new { @iMaSp = item.iMaNH})</button>
+                </div>
+            }
+        </div>
+        <div class="shopping-cart-btns">
+            <a href="@Url.Action("GioHang","Giohang")">  <button class="main-btn" style="width:49%">Xem giỏ hàng</button></a>
+            <a href="@Url.Action("Dathang","GioHang")"><button style="width:49%" class="primary-btn">Thanh Toán <i class="fa fa-arrow-circle-right"></i></button></a>
+        </div>
+    </div>
+</div>
+
+
